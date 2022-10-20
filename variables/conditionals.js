@@ -106,26 +106,74 @@ Formula : F = (9*C/5) + 32 [ where c = temperature in Celsius and f = temperatur
 Sample Input: 60°C
 Output : 60°C is 140 °F */
 
+var C = 60;
+
+var C_to_F = (9*C/5) +32;
+
+console.log(C_to_F);
+
+
+/* Task 7. Write a JavaScript program to get the difference between a given number and 13, if
+the number is greater than 13 return double difference between that number and 13.
+Sample Input: 11 Sample Input: 32
+Output : 2 Output : 38 */
+
+var l1 = 11;
+var l2 = 32;
+var l3;
+
+if (l1 > 13) {
+    l3 = (l1 - 13)*2;
+} else {
+    l3 = 13 - l1;
+}
+
+console.log(l3);
+
+/*Task 8. Write a JavaScript program to compute the sum of the two given integers. If the two
+values are same, then returns triple their sum.
+Sample Input: 12,5 Sample Input: 8,8
+Output : 17 Output : 48 */
+
+var t1 = 12;
+var t2 = 5;
+var t3;
+
+if (t1 === t2) {
+    t3 = 3 * (t1 +t2);
+} else {
+    t3 = t1 + t2;
+}
+ console.log(t3);
+
+/*Task 9. Write a JavaScript program to check two given numbers and print “true” if one of
+the number is 50 or if their sum is 50.
+Sample Input: 5,54 Sample Input: 6,50 Sample Input: 40,10
+
+Output : - Output : true Output : true*/
+
+var r1 = 6;
+var r2 = 50;
+var r3;
+
+if (r1 === 50 || r2 === 50 || r1 + r2 === 50) {
+    console.log(true);
+}
 
 
 
+/*Task 10. Write a JavaScript program to check a given integer is within 20 of 100 or 400,
+and print range in which number belongs.
+Sample Input: 13 Sample Input: 34 Sample Input: 256
+Output : - Output : 20 ⇔ 100 Output : 100 ⇔ 400*/
 
 
 
+var o1 = 34;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if (o1 > 20 && o1 < 100) {
+    console.log("Od 20 do 100");
+} else if (o1 > 100 && o1 < 400) {
+    console.log("od 100 do 400");
+}
 
