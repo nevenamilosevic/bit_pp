@@ -177,3 +177,68 @@ if (o1 > 20 && o1 < 100) {
     console.log("od 100 do 400");
 }
 
+
+// Sa predavanja
+
+/*Write a program that compares
+two numbers and display the
+larger. Result should be
+displayed in the console. */ 
+
+var v1 = 2;
+var v2 = 15;
+
+if (v1 > v2) {
+    console.log(v1);
+} else {
+    console.log(v2);
+}
+
+/*Write a program to check if the
+number is divisible by 2. If it
+is, print even, if not, print
+odd.
+
+Sample numbers: 3, 4, 9 (check one at the time)
+
+Output: odd, even, odd */
+
+var f1 = 17;
+
+if (f1 % 2 === 0) {
+    console.log("even");
+} else {
+    console.log("odd");
+}
+
+/* Write a program to check if the
+number is divisible by 3 and 5.
+If it is, print that number.
+
+Sample numbers: 15, 12 (check one at the time)
+
+Output: 15 */
+
+var c4 = 30;
+
+if (c4 % 3 === 0 && c4 % 5 === 0) {
+    console.log(c4)
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
