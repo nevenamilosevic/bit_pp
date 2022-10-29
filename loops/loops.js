@@ -56,7 +56,7 @@ var suma = 0;
 var i = 0;
 
 for (i = 0; i < 1000; i++) {
-    if (i % 3 === 0 && i % 5 ===0) {
+    if (i % 3 === 0 && i % 5 === 0) {
         suma = suma + i;
     }
 }
@@ -213,7 +213,7 @@ for (i=0; i < (a.length - 2);) {
     if (a[i] < a[i+1]) {
         i += 1;
     } else {
-        a [i] = a[i+1];
+        a[i] = a[i+1];
         i++
     }
 }
@@ -226,7 +226,22 @@ Input array: [4, 2, 2, -1, 6]
 Output: 2 */
 
 
+var arr = [4,2,2,-1,6];
+var min = arr[0];
+var min2 = arr[0];
+for(count=0; count<arr.length;count++){
+    if(arr[count]<min){
+        min = arr[count];
 
+    }
+}
+
+for(count=0; count<arr.length;count++){
+    if(arr[count]!==min && arr[count]<min2){
+        mini2 = arr[count]
+        console.log('secound smallest number',mini2);
+    }
+}
 
 
 
@@ -289,22 +304,108 @@ Output array: [4, 3, 5, 8, 6, 11, 2, 9] */
 
 var a = [4, 5, 6, 2];
 var b = [3, 8, 11, 9];
-var c = [1];
+var c = [];
 var i = 0;
 var j = 0;
 
+for (i=0; i< (a.length); i++) {
+    
+        c[2*i] = a[i];
+        c[2*i+1] = b[i];
+        
+}
+
+console.log(c);
+
+/* for (i=0; i < a.length; i++) {
+    c[c.length] = a[i];
+    c[c.length] = b[i];
+} */
 
 
 
+/*8. Write a program that concatenates two arrays.
+Input arrays: [4, 5, 6, 2], [3, 8, 11, 9]
+Output array: [4, 5, 6, 2, 3, 8, 11, 9]*/
+
+var a = [4, 5, 6, 2];
+var b = [3, 8, 11, 9];
+var c = [];
+var i = 0;
+
+for (i=0; i < (a.length); i++) {
+    c[c.length] = a[i];
+}
+for (var j=0; j < (b.length); j++) {
+    c[c.length] = b[j];
+}
+
+console.log(c);
 
 
 
+/*9. Write a program that deletes a given element e from the array a.
+Input: e = 2, a = [4, 6, 2, 8, 2, 2]
+
+Output array: [4, 6, 8]*/
 
 
+var e = 2;
+var a = [4, 6, 2, 8, 2, 2];
+var i = 0;
+
+for (i=0; i < a.length; i++) {
+    if (a[i] === e) {
+        delete a[i];
+    }
+}
+console.log(a);
 
 
+/*10. Write a program that inserts a given element e on the given position p in the array a. If
+the value of the position is greater than the array length, print the error message.
+Input: e = 78, p = 3, a = [2, -2, 33, 12, 5, 8]
+Output: [2, -2, 33, 78, 12, 5, 8]*/
 
 
+var e = 78;
+var p = 3;
+var a = [2, -2, 33, 12, 5, 8];
+var i = 0;
+var j = 0;
+var resultArray = [];
 
+/*
+for (i=0; i < a.length; i++) {
+    if (p > a.length) {
+        console.log("Error.");
+    } else {
+        a.length = a.length + 1;
+        a[a.length - 1] = a[a.length - 2];
+        a[a.length - 2] = a[a.length - 3];
+        a[a.length - 3] = a[a.length - 4];
+        a[p] = e;
+        break;
+    }
+}
 
+console.log(a);
 
+*/
+
+for (i=0; i < a.length + 1; i++) {
+    if (p > a.length) {
+        console.log("Error.");
+    } else {
+        if (i < p) {
+            resultArray[i] = a[i];
+        } else if (i === p) {
+            resultArray[i] = e;
+        } else {
+            resultArray[i] = a[i-1];
+        }
+    }
+
+}
+
+console.log(resultArray);
