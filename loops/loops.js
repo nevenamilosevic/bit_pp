@@ -169,18 +169,14 @@ Input: e = 3, a = [5, -4.2, 18, 7]
 Output: no */
 
 
-var e = 5;
+var e = 3;
 var a = [5, -4.2, 3, 7];
 var i = 0;
 
 for (i=0; i < a.length; i++) {
     if (e === a[i]) {
-        console.log("Yes");
-        break;
-    } else {
-        console.log("No");
-        break;
-    }
+        console.log("Yes"); 
+    } 
 }
 
 /*2. Write a program that multiplies every positive element of a given array by 2.
@@ -409,3 +405,8 @@ for (i=0; i < a.length + 1; i++) {
 }
 
 console.log(resultArray);
+
+
+
+
+
