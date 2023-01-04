@@ -1,4 +1,6 @@
-/*IIFE = Immediately Invoked Function Expressions
+/*exercise 8
+
+IIFE = Immediately Invoked Function Expressions
 1. Write IIFE that replaces the first and the last element of the given array and prints out its
 elements.
 Input array: [4, 5, 11, 9]
@@ -162,7 +164,7 @@ console.log(resultFilerOdd);
 
 
 
-/*functions2
+/*functions2 s.o.s.
 
 1. Write a function that checks if a given string contains digit 5.
 Input: “1b895abd”

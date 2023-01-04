@@ -795,10 +795,51 @@ console.log(result);
 Input array: [4, 2, 2, -1, 6]
 Output: 2 */ 
 
+var min = "";
+var min2 = "";
+
+function minimumOfAGivenArray2 (a) {
+       for (var i = 0; i < a.length - 1; i++) {
+        if (a[i] < a[i+1]) {
+            min = a[i];
+        } else {
+            min = a[i+1];
+        }
+       }
+
+       var b = min;
+
+       for (var i = 0; i < a.length - 1; i++) {
+        if (a[i] > b && a[i] < a[i+1]) {
+            min2 = a[i];
+        } else if (a[i+1] > b && a[i+1] < a[i]) {
+            min2 = a[i+1];
+        }
+       }
+
+    return min2;
+}
+
+var result = minimumOfAGivenArray2 ([4, 2, 2, -1, 6]);
+console.log(result);
+
 
 /*5. Write a program that calculates the sum of positive elements in the array.
 Input array: [3, 11, -5, -3, 2]
 Output: 16 */
+
+function sumOfPositive (a) {
+    var s = 0;
+    for (var i = 0; i < a.length; i++) {
+        if (a[i] > 0) {
+            s = s + a[i];
+        }
+    }
+    return s;
+}
+
+var res5 = sumOfPositive([3, 11, -5, -3, 2]);
+console.log(res5);
 
 /*6. Write a program that checks if a given array is symmetric. An array is symmetric if it can
 be read the same way both from the left and the right hand side.
@@ -807,18 +848,72 @@ Output: The array is symmetric.
 Input array: [3, 4, 12, 8]
 Output: The array isn’t symmetric. */
 
+function isSymmetric (a) {
+    for (var i = 0; i < a.length; i++) {
+        if (a[i] == a[a.length - i - 1]) {
+            var res6 = "The array is symmetric."
+        } else {
+            var res6 = "The array is not symmetric."
+        }
+    }
+
+    console.log(res6);
+}
+
+isSymmetric([2, 4, -2, 7, -2, 4, 2]);
+
 /*7. Write a program that intertwines two arrays. You can assume the arrays are of the same
 length.
 Input arrays: [4, 5, 6, 2], [3, 8, 11, 9]
 Output array: [4, 3, 5, 8, 6, 11, 2, 9]*/
 
+function intertwinesTwoArray (a, b) {
+    var c = [];
+    for (var i = 0; i < (a.length); i++) {
+        c[c.length] = a[i];
+        c[c.length] = b[i];
+    }
+
+    console.log(c);
+}
+
+intertwinesTwoArray([4, 5, 6, 2], [3, 8, 11, 9]);
+
 /*8. Write a program that concatenates two arrays.
 Input arrays: [4, 5, 6, 2], [3, 8, 11, 9]
 Output array: [4, 5, 6, 2, 3, 8, 11, 9]*/
 
+function concatenatesTwoArray (a, b) {
+    var c = [];
+    for (var i = 0; i < a.length; i++) {
+        c[c.length] = a[i];
+    }
+
+    for (var j = 0; j < b.length; j++) {
+        c[c.length] = b[j];
+    }
+
+    console.log(c);
+}
+
+concatenatesTwoArray([4, 5, 6, 2], [3, 8, 11, 9]);
+
 /*9. Write a program that deletes a given element e from the array a.
 Input: e = 2, a = [4, 6, 2, 8, 2, 2]
 Output array: [4, 6, 8]*/
+
+function deletesAGivenElement (e, a) {
+    var b = [];
+    for (var i = 0; i < a.length; i++) {
+        if(a[i] !== e) {
+            b[b.length] = a[i];
+        }
+    }
+    return b;
+}
+
+var res9 = deletesAGivenElement(2, [4, 6, 2, 8, 2, 2]);
+console.log(res9);
 
 /*10. Write a program that inserts a given element e on the given position p in the array a. If
 the value of the position is greater than the array length, print the error message.
@@ -826,6 +921,327 @@ Input: e = 78, p = 3, a = [2, -2, 33, 12, 5, 8]
 Output: [2, -2, 33, 78, 12, 5, 8]*/
 
 
+function insertAGivenEl (e, p, a) {
+    var b = [];
+    if (p > a.length) {
+        return "Error.";
+    } else {
+        for (var i = 0; i < a.length; i++) {
+            if (i < p) {
+                b[i] = a[i];
+            } else if (i == p) {
+                b[i] = e;
+            } else {
+                b[i] = a[i-1];
+                b[i+1] = a[a.length - 1];
+            }
+        }
+        return b;
+    }
+}
+
+
+var res10 = insertAGivenEl(78, 3, [2, -2, 33, 12, 5, 8]);
+console.log(res10);
+
+
+
+
+
+
+/*functions 4
+
+1. Find the min and max element in the following array and switch their places. Print out the
+modified array in the console.
+Input: [ 3, 500, 12, 149, 53, 414, 1, 19 ]
+Output: [ 3, 1, 12, 149, 53, 414, 500, 19 ] */
+
+
+
+function switchPlace (a) {
+    var min = "";
+    var max = "";
+    var pozMin = "";
+    var pozMax = "";
+    var b = [];
+    
+    for (var i = 0; i < a.length - 1; i++) {
+        if (a[i] < a[i+1]) {
+            min = a[i];
+            pozMin = i;
+        } else {
+            min = a[i+1];
+            pozMin = i + 1;
+        }
+    }
+    for (var k = a.length - 1; k > 0; k--) {
+        if (a[k] < a[k+1]) {
+            max = a[k+1];
+            pozMax = k + 1;
+        } else {
+            max = a[k];
+            pozMax = k;
+        }
+    }
+
+    for (var j = 0; j < a.length; j++) {
+        if(j != pozMin && j != pozMax) {
+            b[b.length] = a[j];
+        } else if (j == pozMin) {
+            b[b.length] = a[pozMax];
+        } else {
+            b[b.length] = a[pozMin];
+        }
+    }
+
+    return b;
+}
+
+
+var res11 = switchPlace ([ 3, 500, 12, 149, 53, 414, 1, 19 ]);
+console.log(res11);
+
+
+
+/*2. Use the following array to make a new one by dividing its values by two and adding 5. If
+a given element&#39;s value is 0, change it to 20.
+Input: [ 3, 500, -10, 149, 53, 414, 1, 19 ]
+Output: [ 6.5, 255, 20, 79.5, 31.5, 212, 5.5, 14.5 ] */
+
+
+
+function divideAndAdd (a) {
+    var b = [];
+    
+    for (var i = 0; i < a.length; i++) {
+        b[b.length] = a[i] / 2 + 5;
+    }
+
+    for (var j = 0; j < b.length; j++) {
+        if(b[j] == "0") {
+            b[j] = 20;
+        }
+    }
+
+    return b;
+}
+
+console.log(divideAndAdd([ 3, 500, -10, 149, 53, 414, 1, 19 ]));
+
+
+/*3. Initialize two arrays. The first one should contain student names, the second one the
+number of points for each student. Display students&#39; names with their corresponding
+grade. Use the following ranges:
+51-60 -&gt; 6,
+61-70 -&gt; 7,
+71-80 -&gt; 8,
+81-90 -&gt; 9,
+91-100 -&gt; 10.
+Input:
+[ &quot;Micahel&quot;, &quot;Anne&quot;, &quot;Frank&quot;, &quot;Joe&quot;, &quot;John&quot;, &quot;David&quot;, &quot;Mark&quot;, &quot;Bill&quot; ], [ 50, 39, 63, 72, 99,
+51, 83, 59 ]
+Output:
+Bill acquired 59 points and earned 6. Micahel acquired 50 points and failed to complete
+the exam. */
+
+
+
+function grades(names,points) {
+    var output = "";
+  
+    for (var i = 0; i < points.length; i++) {
+      if (points[i] <= 50) {
+          var result = "Failed"
+      }
+      if (points[i] > 50 && points[i] <= 60) {
+          result = 6
+      }
+      if (points[i] > 60 && points[i] <= 70) {
+          result = 7
+      }
+      if (points[i] > 70 && points[i] <= 80){
+          result = 8
+      }
+      if (points[i] > 80 && points[i] <= 90) {
+          result = 9
+      }
+      if (points[i] <= 100 && points[i] > 90) {
+          result = 10
+      }
+      output += names[i] + " " + result + "\n";
+    }
+    return output
+  }
+  
+  console.log(grades([ "Michael", "Anne", "Frank", "Joe", "John", "David", "Mark", "Bill" ], [ 50, 39, 63, 72, 99, 51, 83, 59 ]))
+  
+
+
+/* 4 i 5 skip
+6. Write a program that uses a loop to add all the even numbers from 1 to 1000 and
+subtracts all the odd numbers 1 to 500 from the calculated sum. The result should then
+be multiplied by 12.5 and displayed in console.
+Output: 2350000 */
+
+function addAndSubract () {
+    var sumEven = 0;
+    var sumOdd = 0;
+    var res = 0;
+    var result = 0;
+
+    for (var i = 0; i <= 1000; i++) {
+        if (i % 2 === 0) {
+            sumEven += i;
+        }
+    }
+
+    for (var i = 0; i <= 500; i++) {
+        if (i % 2 !== 0) {
+            sumOdd += i;
+        }
+    }
+    
+    res = sumEven - sumOdd;
+    result = res * 12.5;
+
+    return result;
+}
+
+console.log(addAndSubract ());
+
+/*7. Define a 10 element array. Take the first two letters from every string (that has at least 2
+letters) in the array and create a new string from them. Print it out in the console.
+Input: [ &quot;M&quot;, &quot;Anne&quot;, 12, &quot;Steve&quot;, &quot;Joe&quot;, &quot;John&quot;, &quot;David&quot;, &quot;Mark&quot;, true, &quot;A&quot; ]
+
+Output: AnStJoJoDaMa */
+
+
+
+function theFirsLetters (a) {
+    var result = "";
+    var temp;
+
+    for (var i = 0; i < a.length; i++) {
+        if ((typeof a[i]) === "string" && a[i].length > 2) {
+          temp = a[i][0] + a[i][1];
+          result += temp;
+        }
+      }
+      return result;
+}
+
+console.log(theFirsLetters([ "M", "Anne", 12, "Steve", "Joe", "John", "David", "Mark", true, "A" ]));
+
+
+/*8. Write a program that takes a string and prints its characters out in reversed order in the
+console.
+Input: Belgrade Institute of Technology
+Output: ygolonhceT fo etutitsnI edargleB */
+
+
+function reverseString(a) {
+    var res = "";
+    for (var i = a.length - 1; i >= 0; i--) {
+        res += a[i]
+    }
+    return res;
+}
+console.log(reverseString("Belgrade Institute of Technology"))
+
+
+/*9. Write a program that displays all the combinations of two numbers between 1 and 7.
+Don&#39;t display two of the same numbers at the same time. Display the number of possible
+combinations, as well. (E.g. (1.2),(2,1) is allowed, but not (1,1), (2,2)...). */
+
+function numberCombination() {
+    var res = "";
+    for (var i = 1; i <= 7; i++) {
+      for (var j = 1; j <= 7; j++) {
+        if (i !== j) {
+          res += "(" + i + ", " + j + ")" + " ";
+        }
+      }
+    }
+    return res;
+  }
+  console.log(numberCombination())
+
+
+  /*10. Write a program that checks if the entered number is a prime number (i.e. divisible only
+by 1 and by itself).
+Input: 17 | 15
+Output: true | false */
+
+
+// function checkIfPrime(n) {
+//     var prime = true;
+//     var divider = 2;
+//     while ( divider < n ) {
+//         if (n % divider === 0)  {
+//             prime = false
+//             }
+//         divider = divider + 1
+//     }
+//     return prime
+// }
+
+// console.log(checkIfPrime(17))
+
+
+
+function checkIfPrime (n) {
+    var brDel = 0;
+    for (var i = 1; i <= n; i++) {
+        if (n % i === 0) {
+            brDel += 1;
+        }
+    }
+
+    if (brDel > 2) {
+        return "The number is not prime."
+    } else return "The number is prime."
+}
+
+console.log(checkIfPrime(15));
+
+
+/*11. Check if a given string is a palindrome (spaces are ignored).
+Input: eye | Geek | a nut for a jar of tuna
+Output: true | false | true */
+
+
+function palindromCheck (a) {
+    var result = true;
+    for (var i = 0, j = a.length - 1; i <= j; i++, j--) {
+      if (a[i] !== a[j]) {
+        result = false;
+        break
+        }
+    } 
+    return result;
+}
+console.log(palindromCheck("a nut for a jar of tuna"));
+
+
+/* 12. Write a program that calculates the greatest common divisor of two integers. Note: The
+greatest common divisor of two non-zero integers is the greatest positive number that
+divides both numbers with no remainder.
+Input: 192 42 | 81 9
+Output: 6 | 9 */
+
+
+
+function greatestDivisor(a, b) {
+    var output = 0;
+    var length = a >= b ? b : a;
+    for (var i = 1; i <= length; i++) {
+        if (a % i === 0 && b % i === 0) {
+            output = i
+    }
+}
+return output
+}
+console.log(greatestDivisor(192, 42))
 
 
 
@@ -833,19 +1249,103 @@ Output: [2, -2, 33, 78, 12, 5, 8]*/
 
 
 
+/*predifened functions
+
+
+/*1. Write a function that converts an array of strings into an array of numbers. Filter
+out all non-numeric values.
+Input: [&quot;1&quot;, &quot;21&quot;, undefined, &quot;42&quot;, &quot;1e+3&quot;, Infinity]
+Output: [1, 21, 42, 1000] */
+
+
+
+function arrayConvert(a) {
+    var b = [];
+
+    for (var i = 0; i < a.length; i++) {
+      var e = parseFloat(a[i]);
+      if (isFinite(e)) {
+        b[b.length] = e;
+      }
+    }
+    return b;
+}
+console.log(arrayConvert(["1", "21", undefined, "42", "1e+3", Infinity]))
 
 
 
 
+/*2. Write a program to join all elements of the array into a string skipping elements
+that are undefined, null, NaN or Infinity.
+Input: [NaN, 0, 15, false, -22, &#39;&#39;, undefined, 47, null]
+Output: “015false-2247” */
+
+
+function joinToString(a) {
+    var b = "";
+
+    for (var i = 0; i < a.length; i++) {
+        if (isFinite(a[i]) === true && a[i] !== null) {
+          b += a[i];
+        }
+    }
+  return b;
+}
+console.log(joinToString([NaN, 0, 15, false, -22, "", undefined, 47, null]));
+
+
+/*3. Write a program to filter out falsy values from the array.
+Input: [NaN, 0, 15, false, -22, &#39;&#39;, undefined, 47, null]
+Output: [15, -22, 47] */
+
+
+function filterFalsyOut(a) {
+    var b = [];
+
+    for (var i = 0; i < a.length; i++) {
+        if (!!a[i]) {
+          b[b.length] = a[i]
+        }
+    }
+  return b;
+}
+console.log(filterFalsyOut([NaN, 0, 15, false, -22, '', undefined, 47, null]))
+
+
+/*4. Write a program that calculates a number of integer values in the array.
+Input: [NaN, 23.1, 15, false, -22.5, &#39;&#39;, 4, 7, null]
+Output: 3 */
+
+
+function countIntegers(a) {
+    var b = [];
+    for (var i = 0; i < a.length; i++) {
+        if (parseInt(a[i]) === a[i]) {
+          b[b.length] = a[i]
+        } 
+    }
+    return b.length;
+  }
+  console.log(countIntegers([NaN, 23.1, 15, false, -22.5, '', 4, 7, null]))
 
 
 
 
+/*5. Write a program that calculates a number of float values in the array.
+Input: [NaN, 23.1, 15, false, -22.5, &#39;&#39;, 4, 7, null]
+Output: 2 */
 
 
-
-
-
+function countFloats(a) {
+    var b = [];
+    for (var i = 0; i < a.length; i++) {
+        if (typeof a[i] === "number" && a[i] !== parseInt(a[i]) && isNaN(a[i]) === false) {
+          b[b.length] = a[i]
+        } 
+    }
+    return b.length
+  }
+  console.log(countFloats([NaN, 23.1, 15, false, -22.5, '', 4, 7, null]))
 
 
 
