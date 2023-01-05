@@ -1,32 +1,32 @@
 /* 1. Create an object that represents your favourite coffee. Please include coffee name,
 strength, flavour, milk, sugar, … everything you like! */
 
-var coffee = {
-    name: 'cappuccino',
-    strength: 'midl',
-    flavour: 'chocolate',
-    milk: 'yes',
-    sugar: 'yes',
-  };
+
+function Coffee(name, strength, flavour, milk, sugar) {
+    this.name = name;
+    this.strength = strength;
+    this.flavour = flavour;
+    this.milk = milk;
+    this.sugar = sugar;
+  }
   
+  var coffee = new Coffee("cappuccino", "midl", "chocolate", "yes", "yes, please");
   console.log(coffee);
 
-  
+
 /* 2. Create an object that represents your favourite movie. Please include title, actors,
 director, genre, popularity. */
 
-var favouriteMovie = {
-    title: "Zona Zamfirova",
-    actor: { 
-        actor1: "Katarina Radivojevic", 
-        actor2: "Sloboda Micalovic", 
-        actor3: "Vojin Cetkovic", 
-    },
-    director: "Zdravko Sotra", 
-    genre: "komedija", 
-    popularity: "najpopularniji oko praznika",
-};
 
+function FavouriteMovie(title, actor, director, genre, popularity) {
+    this.title = title;
+    this.actor = actor;
+    this.director = director;
+    this.genre = genre;
+    this.popularity = popularity;
+}
+
+var favouriteMovie = new FavouriteMovie ("Zona Zamfirova", ["Katarina Radivojevic", "Sloboda Micalovic", "Vojin Cetkovic"], "Zdravko Sotra", "komedija", "najpopularniji oko praznika");
 
 console.log(favouriteMovie);
 
@@ -39,30 +39,30 @@ repository, a method that checks if the project is written in JavaScript as well
 method that checks if the project is in development or not. */
 
 
-function getProgram(desc, lang, git, dev) {
-    var program = {
-        description: desc,
-        language: lang,
-        gitRep: git,
-        status: dev,
-        printGit: function () {
-            console.log(program.gitRep);
-        },
-        isJavaScript: function () {
-            if (program.language === 'JavaScript') {
-                return true;
-            }
-            return false;
-        },
-        isCompleted: function () {
-            return program.status;
-        },
-    };
-    return program;
-  }
-  
-var res = getProgram('program', 'JS', 'nevenamilosevic', true);
-console.log(res);
+function Project(desc, lang, git, dev) {
+    this.description = desc;
+    this.language = lang;
+    this.gitRep = git;
+    this.status = dev;
+
+    this.printGit = function () {
+        console.log(this.gitRep);
+    },
+    this.isJavaScript = function () {
+        if (this.language === 'JavaScript') {
+            return true;
+        } else return false;
+    },
+    this.isCompleted = function () {
+        return this.status;
+    }
+}
+
+var project = new Project ('program', 'JS', 'nevenamilosevic', true);
+    
+console.log(project);
+
+
 
 
 /*4. Write a function that creates an object that represents a culinary recipe. Each recipe is
@@ -75,7 +75,7 @@ preparation.
 ○ Add a method that delete a given ingredient from the list of ingredients.*/
 
 
-function createRecipe(
+function CreateRecipe(
     name,
     cuisine,
     complex,
@@ -84,23 +84,23 @@ function createRecipe(
     instruction,
     newCuisine
   ) {
-    var recipe = {
-      recipeName: name,
-      cuisineType: cuisine,
-      complexity: complex,
-      listOfIngredients: ingredients,
-      preparingTime: time,
-      preparingInstruction: instruction,
-      printIngredinets: function () {
+    
+    this.recipeName = name;
+    this.cuisineType = cuisine;
+    this.complexity = complex;
+    this.listOfIngredients = ingredients;
+    this.preparingTime = time;
+    this.preparingInstruction = instruction;
+    this.printIngredinets = function () {
         console.log(this.listOfIngredients);
       },
-      isItDoneIn15min: function () {
+    this.isItDoneIn15min = function () {
         return this.preparingTime === '15min';
       },
-      replaceCuisine: function () {
-        return (recipe.cuisineType = newCuisine);
+    this.replaceCuisine = function () {
+        return (this.cuisineType = newCuisine);
       },
-      deleteIngredient: function (list, ing) {
+    this.deleteIngredient = function (list, ing) {
         var updatedList = [];
         for (var i = 0; i < list.length; i++) {
           if (list[i] !== ing) {
@@ -108,12 +108,11 @@ function createRecipe(
           }
         }
         return updatedList;
-      },
-    };
+      }
     return recipe;
   }
   
-  var recipe = createRecipe(
+  var recipe = new CreateRecipe(
     'pancakes',
     'french',
     2,
@@ -127,9 +126,3 @@ function createRecipe(
   console.log(recipe.isItDoneIn15min());
   console.log(recipe.replaceCuisine());
   console.log(recipe.deleteIngredient(recipe.listOfIngredients, 'milk'));
-  
-
-
-
-
-
