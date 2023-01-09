@@ -394,9 +394,211 @@ var mostExpensive = function (arr) {
 
 console.log(mostExpensive(products));
 
+/*7.
+a. Write a function that checks if a given string is written in all capitals. */
 
+function checkWriting(string) {
+    for (var i = 0; i < string.length; i++) {
+
+        if (string === string.toUpperCase()) {
+            var res = true;
+        } else {
+            res = false;
+        }
+    }
+    return res;
+}
+console.log(checkWriting("AnaNas"));
 
   
+
+/*7.
+b. Write a function that checks if a given string contains any digits. */
+
+
+function digitsCheck (arr1) {
+    var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    for (var i = 0; i < arr1.length; i++) {
+        for (var j = 0; j < 11; j++) {
+            if (arr1[i] == arr[j]) {
+                var temp = true;
+                break
+            }
+        }
+    }
+    return temp;
+}
+console.log(digitsCheck("nev2ena"));
+
+
+/*7.
+c. Write a function that checks if a given string is a valid hexadecimal color. */
+
+
+function isValidColor(str) {
+    return str.match(/^#([0-9a-f]{3}){1,2}$/i) !== null;
+}
+console.log(isValidColor("#FFF"))
+
+/*7.
+d. Write a function that checks if a given number belongs to the interval from 1900
+to 2018. */
+
+function checkInterval(n) {
+    return n > 1900 && n < 2018
+}
+console.log(checkInterval(1956));
+
+/*7.
+e. Write a function named validator that returns an object with properties
+stringValidator, passwordValidator, colorValidator, and yearValidator referencing
+the functions from a) to d). */
+
+
+
+function Validator(str, pw, color, year) {
+    this.stringValidator = str;
+    this.passwordValidator = pw;
+    this.colorValidator = color;
+    this.yearValidator = year;
+}
+
+var check = new Validator(checkWriting, digitsCheck, isValidColor, checkInterval);
+
+console.log(check);
+console.log(check.stringValidator("MAU"))
+console.log(check.passwordValidator("23fsd"))
+console.log(check.colorValidator("#FFF000"))
+console.log(check.yearValidator(2017))
+
+
+
+/*8. Write a function that calculates a number of days to your birthday.
+
+Input: 25 February
+Output: 5 days */
+
+var birthday = new Date('09/01/2023');
+var today = new Date();
+
+function calculateDays(birthday, today) {
+    var difference = birthday.getTime() - today.getTime();
+    var daysUntil = Math.ceil(difference / (1000 * 3600 * 24));
+    return daysUntil;
+}
+
+console.log(calculateDays(birthday, today) + " days")
+
+/*9. Write a function that for a given departure and arrival time calculates the time the trip
+takes.
+Input: 8:22:13 11:43:22
+Output: 3 hours 21 minutes 9 seconds */
+
+function tripTime(start, end) {
+
+  var a = new Date(start);
+  var b = new Date(end);
+  var timeDiff = b.getTime() - a.getTime();
+
+  var hours = timeDiff / 1000 / 60 / 60;
+
+  var min = hours * 60 - Math.round(hours) * 60
+
+  var sec = min * 60 - Math.round(min) * 60;
+
+  return Math.round(hours) + " hours " + Math.round(min) + " minutes " + Math.round(sec) + " seconds";
+}
+
+console.log(tripTime('2022-01-09T08:22:13', '2022-01-09T11:43:22'));
+
+
+/*10.
+a. Write a constructor function that creates points in space. Each point in space has its own x, y, and z coordinate. For example, (3, 5, 1) can be a point in space.*/
+
+
+function Coordinates(x, y, z) {
+  this.xAxis = x;
+  this.yAxis = y;
+  this.zAxis = z;
+}
+
+var k = new Coordinates(3, 5, 1);
+console.log(k)
+
+/*10.
+b. Write a function that calculates the distance between two points in the space. */
+
+function twoPointsDistance (k1, k2) {
+    var a = k2.x - k1.x;
+    var b = k2.y - k1.y;
+    var c = k2.z - k1.z;
+    return Math.hypot(a, b, c);
+}
+
+var distancess = twoPointsDistance({x: 2, y: 2, z: 4}, {x: 2, y: 4, z: 4});
+console.log(distancess);
+
+
+/*11.
+a. Write a function that generates a random integer value between 5 and 20. 
+b. Write a function that generates a random integer value between 50 and 100.*/
+
+
+
+
+function generateRandomInt(min, max) {
+  var difference = max - min;
+  var randomNr = Math.random();
+  randomNr = Math.floor( randomNr * difference);
+  randomNr = randomNr + min;
+  return randomNr;
+}
+
+console.log(generateRandomInt(5, 20))
+console.log(generateRandomInt(50, 100))
+
+
+/*11.
+c. Write a function which expects a number and a callback generator function and
+returns an array of numbers produced by the generator function. */
+
+
+
+function generateRandomArray(n, array) {
+  for (var i = 0; i < n; i++) {
+  array.push(Math.round(Math.random() * n))
+  }
+  return array;
+}
+
+console.log(generateRandomArray(15, []))
+
+
+
+/*12. Write a function that shuffles the elements of a given array.
+
+Input: [3, 6, 11, 2, 9, 1]
+
+Output: [6, 2, 9, 1, 3, 11] (it can be any random permutation of the given array) */
+
+
+
+function shuffleArray(array) {
+  for (var i = array.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+  }
+  return array;
+}
+
+console.log(shuffleArray([3, 6, 11, 2, 9, 1]))
+
+
+
+
+
 
 
 
