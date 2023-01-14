@@ -98,7 +98,7 @@ WebApp.prototype.getData = function() {
 }
 
 WebApp.prototype.reactBased = function() {
-    for(var i = 0; i < this.technologies.length; i++) {
+    for(var i = 0; i < this.technologies.length - 1; i++) {
         if(this.technologies[i] === "react" || this.technologies[i] === "React"){
             var res = true;
         } else {
@@ -113,7 +113,7 @@ MobileApp.prototype.getData = function() {
 }
 
 MobileApp.prototype.forAndroid = function() {
-    for(var i = 0; i < this.platforms.length; i++) {
+    for(var i = 0; i < this.platforms.length - 1; i++) {
         if(this.platforms[i] === "android" || this.platforms[i] === "Android"){
             var ress = true;
         } else {
@@ -124,7 +124,7 @@ MobileApp.prototype.forAndroid = function() {
 }
 
 App.prototype.isCCLicence = function() {
-    for(var i = 0; i < this.licence.length; i++) {
+    for(var i = 0; i < this.licence.length - 1; i++) {
         if(this.licence[i] === "cc" || this.licence[i] === "CC"){
             var res1 = true;
         } else {

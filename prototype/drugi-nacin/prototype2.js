@@ -68,7 +68,7 @@ class App {
         this.stars = stars;
     };
     isCCLicence() {
-        for(var i = 0; i < this.licence.length; i++) {
+        for(var i = 0; i < this.licence.length - 1; i++) {
             if(this.licence[i] === "cc" || this.licence[i] === "CC"){
                 var res1 = true;
             } else {
@@ -96,7 +96,7 @@ class WebApp extends App {
         console.log(this.name + "\n" + this.url + "\n" + this.technologies + "\n" + this.licence + "\n" + this.stars)
     };
     reactBased() {
-        for(var i = 0; i < this.technologies.length; i++) {
+        for(var i = 0; i < this.technologies.length - 1; i++) {
             if(this.technologies[i] === "react" || this.technologies[i] === "React"){
                 var res = true;
             } else {
@@ -117,7 +117,7 @@ class Mobile extends App {
         console.log(this.name + "\n" + this.platforms + "\n" + this.licence + "\n" + this.stars)
     };
     forAndroid() {
-        for(var i = 0; i < this.platforms.length; i++) {
+        for(var i = 0; i < this.platforms.length - 1; i++) {
             if(this.platforms[i] === "android" || this.platforms[i] === "Android"){
                 var ress = true;
             } else {
