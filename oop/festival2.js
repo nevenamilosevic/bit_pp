@@ -1,104 +1,92 @@
 'use strict';
 
 (function () {
-    console.log("Hi");
 
-
-    function Genre(n) {
-        if (!n) {
-            throw new Error("Property name is required");
+    class Genre {
+        constructor(n) {
+            this.name = n;
         }
 
-        this.name = n;
-        this.getData = function () {
-            var firstLetter = this.name[0];
-            var lastLetter = this.name[this.name.length - 1];
-            var result = firstLetter + lastLetter;
-            return result.toUpperCase();
-        };
+        getData = function() {
+            return (this.name[0] + this.name[this.name.length-1]).toUpperCase();
+        }
+
     }
 
-    function Movie(t, g, l) {
-        if (!t || !g || !l) {
-            throw new Error("Missing properties");
-        }
-
-        this.title = t;
-        this.genre = g;
-        this.lengthOfMovie = l;
-
-        this.getDate = function () {
-            return (
-                this.title + ", " + this.lengthOfMovie + "min, " + this.genre.getData()
-            );
+    class Movie {
+        constructor(t, g, l) {
+            this.title = t;
+            this.genre = g;
+            this.lengthOfMovie = l;
         };
+
+        getData = function() {
+            return (this.title + ", " + this.length + "min, " + this.genre.getData());
+        } 
+       
     }
+    
 
-    function Program (d) {
-        if (!d) {
-            throw new Error("Missing propertie");
-        }
+    class Program {
+        constructor(d) {
+            this.date = d;
+            this.movieList = [];  
+        };
 
-        this.date = d;
-        this.movieList = [];
-        this.getNumbersOfMovies = function () {
+        getNumberOfMovies() {
             return this.movieList.length;
         };
 
-        this.addMovie = function (m) {
+        addMovie(m) {
             if (!(m instanceof Movie)) {
                 throw new Error('Invalid movie input!');
             }
             this.movieList.push(m);
         };
 
-        this.getTotalLength = function () {
+        getTotalLength() {
             var total = 0;
             this.movieList.forEach(function (movie) {
               total += movie.lengthOfMovie;
             });
             return total;
           };
-          this.getData = function () {
+
+          getData = function() {
             var day = this.date.getDate();
             var month = this.date.getMonth() + 1;
             var year = this.date.getFullYear();
-            var result =
-              day +
-              '.' +
-              month +
-              '.' +
-              year +
-              ', program duration ' +
-              this.getTotalLength() +
-              'min';
-            this.movieList.forEach(function (movie) {
-              result += '\n\t\t' + movie.getData();
+            var result = day + "." + month + "." + year + ", program duration " + this.getTotalLength() + "min";
+            this.movieList.forEach(function(movie) {
+                result += "\n\t\t" + movie.getData();
             });
             return result;
-          };
         }
+    
+    }
       
-        function Festival(n) {
-          if (!n) {
-            throw new Error('Property name is required');
-          }
-          this.name = n;
-          this.programList = [];
-          this.getTotalNumberOfMovies = function () {
+        class Festival {
+            constructor(n) {
+                this.name = n;
+                this.programList = [];
+            };
+          
+          getTotalNumberOfMovies() {
             var total = 0;
             this.programList.forEach(function (program) {
               total += program.getNumberOfMovies();
             });
             return total;
           };
-          this.addProgram = function (p) {
+
+          addProgram(p) {
             if (!(p instanceof Program)) {
               throw new Error('Invalid program input!');
             }
             this.programList.push(p);
           };
-          this.getData = function () {
+          
+          getData = function() {
             var result =
               this.name +
               ' festival has ' +
@@ -124,7 +112,6 @@
         //Testing
         try {
           var kustendorf = new Festival('Kustendorf');
-      
           var sundayProgram = createProgram('12/24/2022');
           var mondayProgram = createProgram('12/25/2022');
       
@@ -148,7 +135,4 @@
     }
 
 )();
-
-
-
 
